@@ -1,90 +1,90 @@
 # XGBoost Landmark Classification
 
-Un proyecto de machine learning que utiliza XGBoost para clasificación de puntos de referencia (landmarks) a partir de datos de segmentos. El proyecto procesa datos en formato `.npy` y entrena un modelo de clasificación.
+A machine learning project that uses XGBoost for landmark classification from segment data. The project processes data in `.npy` format and trains a classification model.
 
-## Descripción
+## Description
 
-Este proyecto incluye:
-- **Entrenamiento del modelo**: Script para entrenar un clasificador XGBoost con datos de landmarks
-- **Predicción**: Script principal para realizar predicciones en nuevos dados
-- **Preprocesamiento**: Funciones de utilidad para limpiar y aumentar los datos
-- **Dockerización**: Soporte completo para ejecutar el proyecto en contenedores Docker
+This project includes:
+- **Model Training**: Script to train an XGBoost classifier with landmark data
+- **Prediction**: Main script to make predictions on new data
+- **Preprocessing**: Utility functions to clean and augment data
+- **Dockerization**: Full support to run the project in Docker containers
 
-## Requisitos
+## Requirements
 
 - Python 3.x
-- Las dependencias se encuentran en `requirements.txt`
+- Dependencies are listed in `requirements.txt`
 
-## Instalación
+## Installation
 
-1. Clonar el repositorio:
+1. Clone the repository:
 ```bash
-git clone <URL_DEL_REPOSITORIO>
+git clone <REPOSITORY_URL>
 cd challenge_alejandro_diaz_montes_de_oca
 ```
 
-2. Crear un entorno virtual (opcional pero recomendado):
+2. Create a virtual environment (optional but recommended):
 ```bash
 python -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. Instalar las dependencias:
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Uso
+## Usage
 
-### Entrenar el modelo
+### Train the model
 
 ```bash
 python train_model.py
 ```
 
-Este script procesará los datos de entrenamiento y generará los artefactos del modelo en la carpeta `model_artifacts/`.
+This script will process the training data and generate model artifacts in the `model_artifacts/` folder.
 
-### Ejecutar predicciones
+### Run predictions
 
 ```bash
 python main.py <input_dir> <output_dir>
 ```
 
-O usando variables de entorno (para Docker):
+Or using environment variables (for Docker):
 ```bash
-export INPUT=<ruta_input>
-export OUTPUT=<ruta_output>
+export INPUT=<input_path>
+export OUTPUT=<output_path>
 python main.py
 ```
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
-├── main.py                 # Script principal de predicción
-├── train_model.py          # Script de entrenamiento del modelo
-├── utils.py                # Funciones de utilidad
-├── requirements.txt        # Dependencias del proyecto
-├── Dockerfile              # Configuración para ejecutar en Docker
-├── README.md               # Este archivo
-├── .gitignore              # Archivos a ignorar en Git
-├── data/                   # Datos de entrenamiento y testing (archivos .npy)
-├── model_artifacts/        # Artefactos del modelo entrenado
-└── output/                 # Resultados y salidas del modelo
+├── main.py                 # Main prediction script
+├── train_model.py          # Model training script
+├── utils.py                # Utility functions
+├── requirements.txt        # Project dependencies
+├── Dockerfile              # Docker configuration
+├── README.md               # This file
+├── .gitignore              # Git ignore file
+├── data/                   # Training and testing data (.npy files)
+├── model_artifacts/        # Trained model artifacts
+└── output/                 # Model results and outputs
 ```
 
 ## Docker
 
-Para ejecutar el proyecto en Docker:
+To run the project in Docker:
 
 ```bash
 docker build -t xgboost-classifier .
 docker run -v $(pwd)/data:/data -v $(pwd)/output:/output xgboost-classifier
 ```
 
-## Autor
+## Author
 
 Alejandro Díaz Montes de Oca
 
-## Licencia
+## License
 
-Especificar la licencia si corresponde
+Specify the license if applicable
