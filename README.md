@@ -80,11 +80,3 @@ To run the project in Docker:
 docker build -t xgboost-classifier .
 docker run -v $(pwd)/data:/data -v $(pwd)/output:/output xgboost-classifier
 ```
-
-## Author
-
-Alejandro Díaz Montes de Oca
-
-## License
-
-Specify the license if applicable
