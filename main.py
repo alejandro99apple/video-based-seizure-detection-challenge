@@ -82,6 +82,6 @@ if __name__ == '__main__':
     probs = booster.predict(dmatrix)
     labels = (probs >= decision_threshold).astype(int)
 
-    output_df = pd.DataFrame({'file_name': file_names, 'label': labels})
+    output_df = pd.DataFrame({'segment_name': file_names, 'label': labels})
     output_df.to_csv(output_path, sep=',', index=False)
     print('Inference done, saving csv file:', output_path, output_df.shape)
