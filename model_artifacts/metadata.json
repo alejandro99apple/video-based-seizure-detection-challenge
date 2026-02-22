@@ -74,5 +74,5 @@
   "n_subjects": 140,
   "negative_label": 0,
   "positive_label": 1,
-  "utility_threshold": 0.8
+  "utility_threshold": 0.79
 }

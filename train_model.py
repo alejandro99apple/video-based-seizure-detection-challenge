@@ -1,4 +1,3 @@
-import sys
 import os
 import glob
 import json
@@ -6,10 +5,7 @@ import numpy as np
 import pandas as pd
 import utils
 import re
-
-from sklearn.model_selection import GroupKFold, StratifiedGroupKFold
 from xgboost import XGBClassifier
-
 
 def explore_train_data(train_data_dir='../data'):
     if train_data_dir is None:
@@ -24,7 +20,7 @@ def process_train_data(train_data_dir='../train_data', max_elem=None):
     _train_data_df = pd.read_csv(os.path.join(train_data_dir, 'train_data.csv'))
     _means = []
 
-    UTILITY_THRESHOLD = 0.80     # use up to this value
+    UTILITY_THRESHOLD = 0.79     # use up to this value
     instances = []
 
     for i in range(len(_train_data_df)):
@@ -78,7 +74,7 @@ def train_model(train_data:pd.DataFrame):
 
     model.fit(X, y)
 
-    model_dir = '/model_artifacts'
+    model_dir = 'model_artifacts'
     os.makedirs(model_dir, exist_ok=True)
     model_path = os.path.join(model_dir, 'xgb_model.json')
     model.get_booster().save_model(model_path)
@@ -86,7 +82,7 @@ def train_model(train_data:pd.DataFrame):
     feature_columns = [c for c in train_data.columns if c not in ['class', 'ID']]
     metadata = {
         'feature_columns': feature_columns,
-        'utility_threshold': 0.80,
+        'utility_threshold': 0.79,
         'decision_threshold': 0.5,
         'positive_label': 1,
         'negative_label': 0,
